@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Guess that Pokemon v1.0</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<script th:inline="javascript">
+function demo()
+{
+var x = [[${pokemon.guess}]];
+var y = [[${pokemon.name}]];
+if(x === y){
+alert("You guessed correctly!");
+} else {
+alert("Incorrect guess!");
+}
+</script>
+
+<img th:src="${pokemonImage}"/>
+
+<h1>Who's That Pokemon?!</h1>
+<form action="#" th:action="@{/play}" th:object="${pokemon}" method="post">
+
+    <p>Guess: <input type="text"  th:field="*{guess}" id="name" placeholder="Name"/></p>
+
+    <p>
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+        <input type="hidden" th:field="*{name}" />
+    </p>
+
+
+
+    <a href="/play">Guess Another Pokemon</a>
+    <label th:text="'Current Score: ' + ${score}"></label>
+
+    <script type="text/javascript" th:src="@{/functionsJS.js}"></script>
+    <button type="button" th:onclick="greetWorld()">Greetworld()</button>
+
+    <script  th:inline="javascript">
+    function greetWorld() {
+        alert("hello world")
+    }
+
+    function salute(name, secondName) {
+        alert("hello: " + name + " hello again: " + secondName)
+    }
+</script>
+
+    <button type="button" th:data-name="*{name}" th:data-guess="*{guess}"
+            th:onclick="salute(this.getAttribute('data-name'), this.getAttribute('data-guess'))">using data attribute</button>
+
+
+<!--<script  th:inline="javascript">-->
+<!--    function checkAnswer() {-->
+<!--        alert("hello world")-->
+<!--    }-->
+
+<!--    function salute(name) {-->
+<!--        alert("hello: " + name)-->
+
+<!--    function compare(pname, gname){-->
+<!--        if(pname === gname){-->
+<!--        alert("Correct!")-->
+<!--        } else{-->
+<!--        alert("Incorrect!")}-->
+<!--        console.log("compare called");-->
+<!--    }-->
+<!--</script>-->
+
+<!--    <div th:attr="data-pname=*{name},data-gname=*{guess}"> </div>-->
+
+
+
+</form>
+
+
+</body>
+</html>

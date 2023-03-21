@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Guess that Pokemon v1.0</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<img th:src="${pokemonImage}"/>
+
+<h1>Who's That Pokemon?!</h1>
+<form action="#" th:action="@{/play}" th:object="${pokemon}" method="post">
+
+  <p>Guess: <input type="text"  th:field="*{guess}" id="name" placeholder="Name"/></p>
+
+  <p>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Reset" />
+    <input type="hidden" th:field="*{name}" />
+  </p>
+
+  <a href="/play">Guess Another Pokemon</a>
+<!--  <label th:text="'Current Score: ' + ${score}"></label>-->
+
+
+</form>
+</body>
+</html>

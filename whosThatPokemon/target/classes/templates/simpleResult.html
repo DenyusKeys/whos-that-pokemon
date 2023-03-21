@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Guess that Pokemon - Result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<p th:if="${pokemonAnswer == pokemonName}">You were correct!</p>
+<p th:if="${pokemonAnswer != pokemonName}">Wrong Guess!</p>
+<p th:text="'You Guessed: ' + ${pokemonAnswer}" />
+<p th:text="'Correct Pokemon: ' + ${pokemonName}" />
+<a href="/play">Guess Another Pokemon</a>
+</body>
+</html>
